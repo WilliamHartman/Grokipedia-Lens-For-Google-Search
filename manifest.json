@@ -3,6 +3,11 @@
   "name": "Grokipedia Lens for Google Search™",
   "version": "0.0.1",
   "description": "Adds a fast Grokipedia answer panel above Google results—summaries, links, and context without leaving the page.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "permissions": [
     "activeTab",
     "scripting",
@@ -28,8 +33,5 @@
       "css": ["styles.css"],
       "run_at": "document_idle"
     }
-  ],
-  "action": {
-    "default_popup": "popup.html"
-  }
+  ]
 }

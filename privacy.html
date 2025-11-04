@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — Grokipedia Lens for Google Search™</title>
+  <style>
+    html,body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,'Noto Sans',sans-serif;line-height:1.6;color:#0f172a;background:#ffffff;margin:0;padding:0}
+    header{background:#0f172a;color:#fff;padding:2.5rem 1rem}
+    header h1{margin:0;font-size:1.8rem;letter-spacing:.2px}
+    main{max-width:900px;margin:0 auto;padding:2rem 1rem}
+    h2{margin-top:2rem;font-size:1.25rem;color:#0f172a}
+    code, kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;background:#f1f5f9;padding:.15rem .35rem;border-radius:.35rem}
+    .box{background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;padding:1rem;margin:1rem 0}
+    footer{border-top:1px solid #e5e7eb;margin-top:2rem;padding:1.5rem 1rem;color:#475569}
+    a{color:#2563eb;text-decoration:none} a:hover{text-decoration:underline}
+    ul{margin:0 0 0 1.2rem}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Privacy Policy — Grokipedia Lens for Google Search™</h1>
+    <p>Last updated: November 04, 2025</p>
+  </header>
+
+  <main>
+    <p>This Privacy Policy explains how the <strong>Grokipedia Lens for Google Search™</strong> Chrome extension (the “Extension”) handles information. We designed the Extension to operate with minimal data and to process as much as possible <em>locally on your device</em>.</p>
+
+    <div class="box">
+      <strong>Short version:</strong>
+      <ul>
+        <li>We do not sell, rent, or trade your personal information.</li>
+        <li>The Extension does not use third‑party advertising or behavioral tracking.</li>
+        <li>We only store lightweight preferences (e.g., on/off state) using <code>chrome.storage</code>.</li>
+        <li>When you open the Grokipedia panel, your current search query may be sent to Grokipedia’s servers solely to fetch the summary you requested.</li>
+      </ul>
+    </div>
+
+    <h2>Information We Collect</h2>
+    <ul>
+      <li><strong>Usage preferences (local).</strong> The Extension may store settings such as whether the panel is expanded, preferred keyboard shortcuts, or feature toggles using <code>chrome.storage.sync/local</code>. These preferences do not include personally identifying information.</li>
+      <li><strong>Search query you request to summarize (network request).</strong> If you activate the panel, the Extension may transmit your current Google search query (and only that text) to the Grokipedia service/API to retrieve a summary and related links. The Extension does not transmit your Google account identity, cookies, browsing history, or other page contents.</li>
+    </ul>
+
+    <h2>Information We Do <em>Not</em> Collect</h2>
+    <ul>
+      <li>No account credentials, Google cookies, or personally identifying information.</li>
+      <li>No full browsing history, keystrokes outside Google Search, or content from other tabs.</li>
+      <li>No precise location, contacts, or device identifiers.</li>
+      <li>No analytics beacons or ad tracking pixels.</li>
+    </ul>
+
+    <h2>How We Use Information</h2>
+    <ul>
+      <li>To provide the core functionality: rendering Grokipedia results inline on Google Search pages.</li>
+      <li>To remember your preferences for a better user experience.</li>
+    </ul>
+
+    <h2>Permissions Explained</h2>
+    <ul>
+      <li><strong><code>activeTab</code> / host permissions for <code>*.google.com</code>:</strong> allow the Extension to run content scripts on Google Search pages to insert the panel.</li>
+      <li><strong><code>storage</code>:</strong> save lightweight settings (e.g., whether the panel is open).</li>
+      <li><strong>Network access to Grokipedia domains:</strong> used only to fetch summaries for your visible query.</li>
+    </ul>
+    <p>If future versions require additional permissions, we will update this policy and the Chrome Web Store listing before release.</p>
+
+    <h2>Third‑Party Services</h2>
+    <p>The Extension may contact the Grokipedia website or API to obtain summaries. Your use of Grokipedia is subject to Grokipedia’s own terms and privacy notices. We do not control and are not responsible for third‑party practices.</p>
+
+    <h2>Data Retention</h2>
+    <ul>
+      <li><strong>Preferences:</strong> kept until you clear extension data or uninstall.</li>
+      <li><strong>Requests to Grokipedia:</strong> the Extension does not retain these. Any retention on Grokipedia’s side is governed by Grokipedia’s policies.</li>
+    </ul>
+
+    <h2>Security</h2>
+    <p>We aim to follow industry best practices for Chrome extensions: least‑privilege permissions, no remote code execution, and TLS for all network requests. No method of transmission or storage is 100% secure, but we work to protect your information.</p>
+
+    <h2>Your Choices</h2>
+    <ul>
+      <li><strong>Disable per‑site:</strong> In Chrome, go to <em>Extensions → Manage</em>, toggle the Extension or restrict “Allow this extension to read and change site data.”</li>
+      <li><strong>Uninstall:</strong> Right‑click the Extension icon → <em>Remove from Chrome…</em></li>
+      <li><strong>Delete local data:</strong> Remove and reinstall the Extension, or clear site data for the Extension under Chrome settings.</li>
+    </ul>
+
+    <h2>Children’s Privacy</h2>
+    <p>The Extension is not directed to children under 13 and does not knowingly collect personal information from children.</p>
+
+    <h2>International Users</h2>
+    <p>The Extension does not maintain servers of its own. Any data sent to Grokipedia will be processed according to Grokipedia’s hosting location(s) and policies.</p>
+
+    <h2>Policy Changes</h2>
+    <p>We may update this policy as the Extension evolves. We will change the “Last updated” date above and, when changes are material, update the Chrome Web Store listing.</p>
+
+    <h2>Contact</h2>
+    <p>Questions or requests? Open an issue on the project’s GitHub repository or email the publisher.</p>
+
+    <div class="box">
+      <strong>Compliance notes</strong>
+      <ul>
+        <li>This Extension adheres to the <em>Chrome Web Store User Data Policy</em> and uses the minimum data necessary to deliver features.</li>
+        <li>We do not sell personal information and do not use it for advertising.</li>
+      </ul>
+    </div>
+
+    <p style="margin-top:2rem;font-size:.95rem;color:#475569">Google Search is a trademark of Google LLC. xAI and Grok are trademarks of xAI Corp. This Extension is an independent project and is not affiliated with or endorsed by Google LLC, xAI Corp., or any of their products or services.</p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Grokipedia Lens for Google Search™ — All rights reserved.</p>
+  </footer>
+</body>
+</html>

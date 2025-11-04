@@ -1,14 +1,16 @@
-# Grokipedia for Google Search
+# Grokipedia Lens for Google Search
 
-A Chrome extension that displays Grokipedia article links at the top of Google search results.
+A Chrome extension that automatically displays Grokipedia article summaries at the top of Google search results.
 
 ## Features
 
-- Automatically detects your Google search query
-- Displays a prominent Grokipedia link at the top of search results
-- Beautiful, modern UI with smooth animations
-- Works across Google domains (.com, .co.uk, .ca, etc.)
-- Supports Google's dynamic content loading
+- **Automatic Integration** - Seamlessly appears above Google search results
+- **Article Summaries** - Shows full article descriptions with expandable text
+- **Smart Extraction** - Fetches article content from Grokipedia dynamically
+- **Beautiful UI** - Modern blue gradient design matching Grok's branding
+- **Responsive Layout** - Works across desktop and mobile views
+- **Multi-Domain Support** - Works on Google.com, Google.co.uk, Google.ca, and more
+- **Dynamic Content** - Handles Google's SPA navigation
 
 ## Installation
 
@@ -18,84 +20,97 @@ A Chrome extension that displays Grokipedia article links at the top of Google s
 2. Enable "Developer mode" in the top right corner
 3. Click "Load unpacked"
 4. Select the `grokipediagoogle` folder
-5. The extension should now be installed and active
+5. The extension is now installed and will automatically work on Google search pages
 
-### For Chrome Web Store Publishing
+### From Chrome Web Store
 
-Before publishing to the Chrome Web Store, you need to:
-
-1. **Create proper icons** - Replace the placeholder text files in the `icons/` folder with actual PNG images:
-
-   - `icons/icon16.png` - 16x16 pixels
-   - `icons/icon48.png` - 48x48 pixels
-   - `icons/icon128.png` - 128x128 pixels
-
-   Recommended: Use a purple/blue gradient design matching the extension's color scheme.
-
-2. **Prepare store assets**:
-
-   - Create promotional images (screenshots, promotional tiles)
-   - Write a detailed description
-   - Add privacy policy if collecting any data
-
-3. **Test thoroughly**:
-   - Test on different Google domains
-   - Test with various search queries
-   - Ensure it doesn't interfere with Google's functionality
+Coming soon!
 
 ## How It Works
 
-1. The extension runs a content script on Google search pages
-2. It extracts the search query from the URL or search input
-3. It constructs a Grokipedia URL based on the query
-4. It injects a styled card at the top of the search results
-5. Users can click the link to view the topic on Grokipedia
+1. The extension detects when you perform a Google search
+2. It opens Grokipedia in a background tab to find matching articles
+3. It extracts the article title and description
+4. It displays a beautiful card above your Google results with:
+   - Article title
+   - Full description (expandable if long)
+   - Link to read more on Grokipedia
+
+## Technical Architecture
+
+### Three-Part System
+
+1. **Content Script** ([content.js](content.js))
+
+   - Runs on Google search pages
+   - Extracts search query from URL or input field
+   - Injects the Grokipedia card into the page
+   - Handles expand/collapse functionality
+
+2. **Background Service Worker** ([background.js](background.js))
+
+   - Creates hidden tabs to load Grokipedia pages
+   - Extracts article titles from search results
+   - Navigates to article pages and extracts descriptions
+   - Handles all text between h1 heading and first h2/h3
+   - Cleans up background tabs automatically
+
+3. **Styling** ([styles.css](styles.css))
+   - Blue/orange gradient matching Grok branding
+   - Smooth animations and transitions
+   - Responsive design for mobile and desktop
+   - Expandable text with fade effect
+
+### Key Technical Details
+
+- Uses background tabs to bypass CORS restrictions
+- Injects scripts into tabs to extract dynamic content
+- Polls for content to handle client-side rendering
+- Constructs article URLs from titles
+- Fallback to search page if article doesn't exist
+- Handles frame removal errors by proper tab management
+- Escapes HTML to prevent XSS vulnerabilities
 
 ## Files Structure
 
 ```
 grokipediagoogle/
-├── manifest.json       # Extension configuration
-├── content.js         # Main script that runs on Google pages
-├── styles.css         # Styling for the Grokipedia card
-├── popup.html         # Extension popup UI
-├── icons/             # Extension icons (you need to add PNG files)
-│   ├── icon16.png
-│   ├── icon48.png
-│   └── icon128.png
+├── manifest.json      # Extension configuration (Manifest V3)
+├── content.js         # Content script for Google pages
+├── background.js      # Service worker for fetching Grokipedia
+├── styles.css         # UI styling
+├── icons/             # Extension icons
+│   ├── icon16.png     # 16x16 toolbar icon
+│   ├── icon48.png     # 48x48 management icon
+│   └── icon128.png    # 128x128 store icon
 └── README.md          # This file
 ```
 
-## How It Works
+## Permissions Explained
 
-The extension uses a three-part architecture:
+- **activeTab** - Access the current Google search page
+- **scripting** - Inject content into pages to extract article data
+- **tabs** - Create background tabs to fetch Grokipedia content
 
-1. **Content Script** ([content.js](content.js)) - Runs on Google search pages, extracts the search query, and displays the Grokipedia card
-2. **Background Service Worker** ([background.js](background.js)) - Fetches Grokipedia pages (bypasses CORS restrictions) and extracts title/description using regex
-3. **Styling** ([styles.css](styles.css)) - Beautiful purple gradient UI with animations
+## Privacy
 
-### Technical Details
+This extension:
 
-- The content script injects a card at the top of Google search results
-- It communicates with the background worker via `chrome.runtime.sendMessage()`
-- The background worker fetches the Grokipedia search page and extracts content
-- Uses regex parsing (not DOM) since service workers don't have DOM APIs
-- Displays loading state while fetching, then updates with actual content
-
-## TODO Before Publishing
-
-- [ ] Create proper PNG icons (16x16, 48x48, 128x128) - See [icons/ICONS_NEEDED.txt](icons/ICONS_NEEDED.txt)
-- [x] Verify the actual Grokipedia URL format is correct (uses `https://grokipedia.com/search?q=query`)
-- [ ] Test on multiple Google domains (.com, .co.uk, .ca)
-- [ ] Fine-tune regex patterns in background.js if needed for better content extraction
-- [ ] Create Chrome Web Store screenshots
-- [ ] Write privacy policy (if needed)
-- [ ] Create promotional images for the store listing
+- Does NOT collect or store any user data
+- Does NOT track your searches
+- Opens temporary background tabs to Grokipedia (closed automatically)
+- Only communicates with Grokipedia.com and Google search pages
 
 ## Version
 
-Current version: 0.0.1
+Current version: **0.0.1**
 
 ## License
 
-[Add your license here]
+Google Search is a trademark of Google LLC.
+xAI and Grok are trademarks of xAI Corp.
+This Extension is an independent project and is not affiliated with or endorsed by Google LLC, xAI Corp., or any of their products or services.
+
+## Donation
+
+https://paypal.me/WHartman86
