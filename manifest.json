@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Grokipedia for Google Search",
-  "version": "1.0.0",
-  "description": "Shows Grokipedia article links at the top of Google search results",
+  "name": "Grokipedia Lens for Google Search™",
+  "version": "0.0.1",
+  "description": "Adds a fast Grokipedia answer panel above Google results—summaries, links, and context without leaving the page.",
   "permissions": [
     "activeTab",
     "scripting",

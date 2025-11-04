@@ -25,6 +25,7 @@ A Chrome extension that displays Grokipedia article links at the top of Google s
 Before publishing to the Chrome Web Store, you need to:
 
 1. **Create proper icons** - Replace the placeholder text files in the `icons/` folder with actual PNG images:
+
    - `icons/icon16.png` - 16x16 pixels
    - `icons/icon48.png` - 48x48 pixels
    - `icons/icon128.png` - 128x128 pixels
@@ -32,6 +33,7 @@ Before publishing to the Chrome Web Store, you need to:
    Recommended: Use a purple/blue gradient design matching the extension's color scheme.
 
 2. **Prepare store assets**:
+
    - Create promotional images (screenshots, promotional tiles)
    - Write a detailed description
    - Add privacy policy if collecting any data
@@ -64,23 +66,6 @@ grokipediagoogle/
 └── README.md          # This file
 ```
 
-## Customization
-
-### Changing the Grokipedia URL Format
-
-Edit the `buildGrokipediaUrl()` function in [content.js](content.js) to adjust the URL format:
-
-```javascript
-function buildGrokipediaUrl(query) {
-  const encodedQuery = encodeURIComponent(query);
-  return `https://grok.x.ai/grokipedia/${encodedQuery}`;
-}
-```
-
-### Styling
-
-Modify [styles.css](styles.css) to change colors, animations, and layout. The current design uses a purple gradient (`#667eea` to `#764ba2`).
-
 ## How It Works
 
 The extension uses a three-part architecture:
@@ -109,7 +94,7 @@ The extension uses a three-part architecture:
 
 ## Version
 
-Current version: 1.0.0
+Current version: 0.0.1
 
 ## License
 
