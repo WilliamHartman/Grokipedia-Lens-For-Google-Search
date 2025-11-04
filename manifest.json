@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Grokipedia for Google Search",
+  "version": "1.0.0",
+  "description": "Shows Grokipedia article links at the top of Google search results",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.google.com/*",
+    "https://www.google.co.uk/*",
+    "https://www.google.ca/*",
+    "https://grokipedia.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/search*",
+        "https://www.google.co.uk/search*",
+        "https://www.google.ca/search*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

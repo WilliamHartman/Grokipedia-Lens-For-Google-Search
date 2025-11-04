@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Icons</title>
+</head>
+<body>
+    <h1>Icon Generator</h1>
+    <p>Right-click each canvas and "Save image as..." to save the icons:</p>
+
+    <div>
+        <h3>icon16.png (16x16)</h3>
+        <canvas id="canvas16" width="16" height="16"></canvas>
+    </div>
+
+    <div>
+        <h3>icon48.png (48x48)</h3>
+        <canvas id="canvas48" width="48" height="48"></canvas>
+    </div>
+
+    <div>
+        <h3>icon128.png (128x128)</h3>
+        <canvas id="canvas128" width="128" height="128"></canvas>
+    </div>
+
+    <script>
+        function drawIcon(canvas) {
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+
+            // Draw rounded rectangle background
+            const radius = size * 0.2;
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.roundRect(0, 0, size, size, radius);
+            ctx.fill();
+
+            // Draw white "G" letter
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size * 0.6}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('G', size / 2, size / 2);
+        }
+
+        // Draw icons on all canvases
+        drawIcon(document.getElementById('canvas16'));
+        drawIcon(document.getElementById('canvas48'));
+        drawIcon(document.getElementById('canvas128'));
+
+        // Auto-download function
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Add download buttons
+        document.body.innerHTML += '<br><button id="downloadAll">Download All Icons</button>';
+        document.getElementById('downloadAll').addEventListener('click', () => {
+            downloadCanvas(document.getElementById('canvas16'), 'icon16.png');
+            setTimeout(() => downloadCanvas(document.getElementById('canvas48'), 'icon48.png'), 100);
+            setTimeout(() => downloadCanvas(document.getElementById('canvas128'), 'icon128.png'), 200);
+        });
+    </script>
+</body>
+</html>
