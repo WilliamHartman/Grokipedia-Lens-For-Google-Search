@@ -269,6 +269,64 @@
   font-weight: 500;
 }
 
+/* Skeleton loading state - matches final result size */
+.grokipedia-loading-skeleton {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.grokipedia-loading-message {
+  font-size: 14px;
+  color: #1e3a8a;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.grokipedia-skeleton-title {
+  height: 22px;
+  width: 60%;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: grokipediaShimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.grokipedia-skeleton-text {
+  height: 14px;
+  width: 100%;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: grokipediaShimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.grokipedia-skeleton-text.short {
+  width: 75%;
+}
+
+.grokipedia-skeleton-button {
+  height: 38px;
+  width: 100%;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: grokipediaShimmer 1.5s infinite;
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+@keyframes grokipediaShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 @keyframes grokipediaSpinner {
   0% {
     transform: rotate(0deg);
