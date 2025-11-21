@@ -92,7 +92,7 @@
     grokipediaContainer.id = 'grokipedia-search-link';
     grokipediaContainer.className = 'grokipedia-container';
 
-    // Show loading state initially
+    // Show loading state initially - sized to match final result to prevent layout shift
     grokipediaContainer.innerHTML = `
       <div class="grokipedia-card">
         <div class="grokipedia-header">
@@ -101,11 +101,16 @@
             <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
-          <span class="grokipedia-title">Grokipedia</span>
+          <span class="grokipedia-title">Grokipedia Lens</span>
         </div>
         <div class="grokipedia-content">
-          <div class="grokipedia-loading">
-            <span class="grokipedia-loading-text">Loading result...</span>
+          <div class="grokipedia-loading-skeleton">
+            <div class="grokipedia-loading-message">Fetching results...</div>
+            <div class="grokipedia-skeleton-title"></div>
+            <div class="grokipedia-skeleton-text"></div>
+            <div class="grokipedia-skeleton-text"></div>
+            <div class="grokipedia-skeleton-text short"></div>
+            <div class="grokipedia-skeleton-button"></div>
           </div>
         </div>
       </div>
@@ -205,6 +210,13 @@
 
   // Main function to initialize the extension
   function init() {
+    // Wait for URL to be a proper Google search URL (not just /search without parameters)
+    // This prevents triggering when using the URL bar as a search bar before navigation completes
+    const currentUrl = window.location.href;
+    if (!currentUrl.match(/google\.(com|co\.uk|ca)\/search\?/)) {
+      return;
+    }
+
     const query = getSearchQuery();
     if (!query) return;
     injectGrokipediaLink(query);

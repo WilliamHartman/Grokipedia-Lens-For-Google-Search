@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Grokipedia Lens for Google Search™",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Adds a fast Grokipedia answer panel above Google results—summaries, links, and context without leaving the page.",
   "icons": {
     "16": "icons/icon16.png",
